@@ -41,6 +41,7 @@ class EverConverter(object):
         for note in raw_notes:
             note_dict = {}
             title = note.xpath('title')[0].text
+            note_dict['title'] = title
             # Use dateutil to figure out these dates
             # 20110610T182917Z
             created_string = parse('19700101T000017Z')
@@ -121,6 +122,14 @@ class EverConverter(object):
             elif not os.path.exists(self.simple_filename):
                 os.makedirs(self.simple_filename)
             for i, note in enumerate(notes):
-                output_file_path = os.path.join(self.simple_filename, str(i) + '.txt')
+                # Original name with number
+                #output_file_path = os.path.join(self.simple_filename, str(i) + '.txt')
+                # Overwrite duplicates
+                #output_file_path = os.path.join(self.simple_filename, note['title'] + '.md')
+                # Check for duplicates
+                output_file_path_no_ext = os.path.join(self.simple_filename, note['title']);
+                while os.path.isfile(output_file_path_no_ext + ".md"):
+                    output_file_path_no_ext = output_file_path_no_ext + "a"
+                output_file_path = output_file_path_no_ext + ".md"
                 with open(output_file_path, 'w') as output_file:
                     output_file.write(note['content'].encode(encoding='utf-8'))
