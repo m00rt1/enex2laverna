@@ -127,7 +127,8 @@ class EverConverter(object):
                 # Overwrite duplicates
                 #output_file_path = os.path.join(self.simple_filename, note['title'] + '.md')
                 # Check for duplicates
-                output_file_path_no_ext_original = os.path.join(self.simple_filename, note['title']);
+                filename = self._format_filename(note['title']);
+                output_file_path_no_ext_original = os.path.join(self.simple_filename, filename);
                 output_file_path_no_ext = output_file_path_no_ext_original
                 count = 0;
                 while os.path.isfile(output_file_path_no_ext + ".md"):
@@ -136,3 +137,8 @@ class EverConverter(object):
                 output_file_path = output_file_path_no_ext + ".md"
                 with open(output_file_path, 'w') as output_file:
                     output_file.write(note['content'].encode(encoding='utf-8'))
+
+    def _format_filename(self, s):
+        for c in r'[]/\;,><&*:%=+@!#^()|?^':
+            s = s.replace(c, '-')
+        return s
