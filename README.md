@@ -47,6 +47,7 @@ Resources
 -----
 
 ever2simple [link](http://github.com/claytron/ever2simple)
+@magowiz "md batch import with bash script" [link](https://github.com/Laverna/laverna/issues/508#issuecomment-239631953)
 
 TODO
 ----
