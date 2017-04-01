@@ -52,5 +52,5 @@ Resources
 TODO
 ----
 
-- Rewrite everything
+- Rewrite everything and/or help with feature implementation [Laverna issue#45](https://github.com/Laverna/laverna/issues/45)
 
