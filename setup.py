@@ -8,7 +8,7 @@ setup(
     description=(
         "Migrate from evernote to simplenote with markdown formatting"),
     long_description=(
-        open("README.rst").read() +
+        open("README.md").read() +
         '\n\n' +
         open("HISTORY.rst").read()
     ),

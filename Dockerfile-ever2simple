@@ -1,0 +1,11 @@
+FROM python:2
+
+VOLUME /usr/src/myapp
+
+WORKDIR /usr/src/myapp
+
+COPY ./ /opt/ever2simple
+RUN cd /opt/ever2simple && pip install -e .
+
+ENTRYPOINT bash
+CMD ["python", "ever2simple"]

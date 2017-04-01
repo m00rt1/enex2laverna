@@ -1,0 +1,29 @@
+version: '3'
+services:
+  ever2simple-build:
+    hostname: ever2simple-build
+    build:
+      context: ./
+      dockerfile: Dockerfile-ever2simple
+  md2laverna-build:
+    hostname: md2laverna-build
+    build:
+      context: ./
+      dockerfile: Dockerfile-md2laverna
+  ever2simple:
+    hostname: ever2simple
+    image: enex2laverna_ever2simple-build
+    volumes:
+      - $PWD:/usr/src/myapp
+    entrypoint: bash
+    command: -c 'ever2simple -f dir -o ./output ./input/notes.enex'
+  md2laverna:
+    hostname: md2laverna
+    image: enex2laverna_md2laverna-build
+    working_dir: /usr/src/myapp
+    volumes:
+      - $PWD:/usr/src/myapp
+    entrypoint: bash
+    command: -c './lvn-md-import.sh ./output ./laverna-backup.zip'
+volumes:
+  data-volume:

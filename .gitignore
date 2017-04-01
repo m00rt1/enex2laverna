@@ -1,2 +1,13 @@
 dist
 /env/
+input/*
+!.gitkeep
+output/*
+!.gitkeep
+laverna-dst/
+laverna-src/
+laverna-backups/
+json/
+md/
+laverna-backup.zip
+laverna-backup.zip.bak
